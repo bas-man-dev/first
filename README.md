@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Instructions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Task
 
-## Available Scripts
+You've learned how to create controlled components and forms in React.
+Now it's time to put that knowledge to use and create a registration form for Little Lemon Restaurant, where users are able to sign up.
 
-In the project directory, you can run:
+The form layout and styling is already predefined for you. You have to add the missing pieces of code to make the form work as per the requirements.
+The form is provided in an uncontrolled fashion and contains the following inputs:
+- First Name
+- Last Name
+- Email
+- Password
+- Role
 
-### `npm start`
+All the local state needed to complete this task has been already defined for you.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Note:** Before you begin, make sure you understand how to work with the Coursera Code Lab for the [Advanced React course](https://www.coursera.org/learn/advanced-react/supplement/htaLX/working-with-labs-in-this-course).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+If you run `npm start` and view the app in the browser you'll notice that the starting React app works as is.
+The app outputs a sign up form with 5 different fields and a submit button.
 
-### `npm test`
+![Alt text](images/image1.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Steps
 
-### `npm run build`
+### **Step 1**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open the `App.js` file.
+Convert all the elements from the form to controlled components by adding the value and onChange attributes to each input.
+Make sure the password input is obscured.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Step 2**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Show an error message if the password is less than 8 characters long and the user has interacted with the input at least once.
+The error message should be displayed below the password input as follows.
 
-### `npm run eject`
+![Alt text](images/image2.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+For that, a component called `PasswordErrorMessage` has been provided to you. Your goal is to implement the logic for when to show the error message.
+The password state is a special one that has an additional property called `isTouched`. This property is used to determine if the user has interacted with the input or not.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **Step 3**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Prevent the default behaviour of the form when the user clicks the submit button.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Step 4**
 
-## Learn More
+Implement the body of `getIsFormValid` function to return `true` if the form is valid and `false` otherwise. This determines the submit button state. The rules for the form to be valid are as follows:
+- The first name cannot be empty.
+- The email must be a valid email address and can't be empty. A function called `validateEmail` has been already provided for you to check if the email is valid. It returns `true` if the email is valid and `false` otherwise.
+- The password must be at least 8 characters long
+- The role must be either `individual` or `business`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **Step 5**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Implement the body of `clearForm` function to clear the form state after a successful submission.
 
-### Code Splitting
+### **Tip**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React offers two focus events for form elements: `onBlur` and `onFocus`. You can check more information about them [here](https://reactjs.org/docs/events.html#focus-events).
